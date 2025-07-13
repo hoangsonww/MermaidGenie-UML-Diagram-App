@@ -1,0 +1,17 @@
+{
+  "name": "mermaidgenie-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,scss,md,html}\"",
+    "format": "npm run lint"
+  },
+  "dependencies": {
+    "prettier": "^3.6.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.3"
+  },
+  "private": true
+}
