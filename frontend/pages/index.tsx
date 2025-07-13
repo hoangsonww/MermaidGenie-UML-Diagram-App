@@ -56,8 +56,44 @@ function useCountUp(target: number) {
   return { ref, val };
 }
 
-const rotatingA = ["description", "idea", "thought", "story", "sketch"];
-const rotatingB = ["diagram", "class-map", "model", "blueprint", "UML"];
+const rotatingA = [
+  "description",
+  "idea",
+  "thought",
+  "story",
+  "sketch",
+  "plan",
+  "concept",
+  "specification",
+  "requirement",
+  "feature",
+  "task",
+  "bug",
+  "issue",
+  "ticket",
+  "user story",
+  "epic",
+  "use case",
+];
+const rotatingB = [
+  "diagram",
+  "class-map",
+  "model",
+  "blueprint",
+  "UML",
+  "flowchart",
+  "schema",
+  "architecture",
+  "design",
+  "visualization",
+  "map",
+  "graph",
+  "chart",
+  "picture",
+  "illustration",
+  "sketch",
+  "draft",
+];
 
 const features = [
   {
