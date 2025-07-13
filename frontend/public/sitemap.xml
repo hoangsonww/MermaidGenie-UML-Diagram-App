@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+    <!-- Homepage -->
+    <url>
+        <loc>https://mermaidgenie.vercel.app/</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Charts listing -->
+    <url>
+        <loc>https://mermaidgenie.vercel.app/charts</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Chart create -->
+    <url>
+        <loc>https://mermaidgenie.vercel.app/charts/create</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Login page -->
+    <url>
+        <loc>https://mermaidgenie.vercel.app/login</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Register page -->
+    <url>
+        <loc>https://mermaidgenie.vercel.app/register</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Reset Password -->
+    <url>
+        <loc>https://mermaidgenie.vercel.app/reset-password</loc>
+        <lastmod>2025-08-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+</urlset>

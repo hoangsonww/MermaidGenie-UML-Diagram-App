@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import * as htmlToImage from 'html-to-image';
+import * as htmlToImage from "html-to-image";
 import { useEffect, useRef, useState, useCallback } from "react";
 import AuthGuard from "@/components/AuthGuard";
 import api from "@/lib/api";
@@ -46,7 +46,6 @@ interface Chart {
   isPublic: boolean;
 }
 
-// Manual debounce hook
 function useDebounce(fn: (...args: any[]) => void, ms: number) {
   const timer = useRef<number | null>(null);
   return useCallback(
@@ -90,12 +89,9 @@ function Detail({ id }: { id: string }) {
   const [isFs, setIsFs] = useState(false);
 
   const router = useRouter();
-
-  // new ref + state for preview‐only fullscreen:
   const previewContainerRef = useRef<HTMLDivElement>(null);
   const [isPreviewFs, setIsPreviewFs] = useState(false);
 
-// toggle fullscreen on the preview card only
   const togglePreviewFs = () => {
     const el = previewContainerRef.current;
     if (!el) return;
@@ -106,7 +102,6 @@ function Detail({ id }: { id: string }) {
     }
   };
 
-// export the SVG out of the preview:
   const exportSvg = () => {
     const svgEl = previewRef.current?.querySelector<SVGSVGElement>("svg");
     if (!svgEl) return;
@@ -121,42 +116,39 @@ function Detail({ id }: { id: string }) {
   };
 
   const exportPng = async () => {
-    const svgEl = previewRef.current?.querySelector<SVGSVGElement>('svg')
-    if (!svgEl) return
+    const svgEl = previewRef.current?.querySelector<SVGSVGElement>("svg");
+    if (!svgEl) return;
 
-    // 1) Temporarily disable any stylesheet that throws on cssRules
-    const disabled: CSSStyleSheet[] = []
+    const disabled: CSSStyleSheet[] = [];
     for (const sheet of Array.from(document.styleSheets) as CSSStyleSheet[]) {
       try {
-        // if this throws, it’s cross-origin
-        sheet.cssRules
+        sheet.cssRules;
       } catch {
-        disabled.push(sheet)
-        sheet.disabled = true
+        disabled.push(sheet);
+        sheet.disabled = true;
       }
     }
 
     try {
-      // 2) Capture only the SVG node
+      // @ts-ignore
       const dataUrl = await htmlToImage.toPng(svgEl, {
         cacheBust: true,
+        // @ts-ignore
         filter: (node) => node === svgEl || svgEl.contains(node as Node),
-      })
+      });
 
-      const a = document.createElement('a')
-      a.href = dataUrl
-      a.download = `${data?.title || 'diagram'}.png`
-      a.click()
+      const a = document.createElement("a");
+      a.href = dataUrl;
+      a.download = `${data?.title || "diagram"}.png`;
+      a.click();
     } catch (err: any) {
-      console.error('PNG export error', err)
-      toast.error('Failed to export PNG')
+      console.error("PNG export error", err);
+      toast.error("Failed to export PNG");
     } finally {
-      // 3) Re-enable your disabled sheets
-      disabled.forEach((s) => (s.disabled = false))
+      disabled.forEach((s) => (s.disabled = false));
     }
-  }
+  };
 
-  // Initialize prompt, code, and public flag
   useEffect(() => {
     if (!data) return;
     setPrompt(data.prompt);
@@ -168,19 +160,20 @@ function Detail({ id }: { id: string }) {
     setCode(cleaned);
   }, [data]);
 
-  // Render function
   const renderDiagram = async (diagramCode: string) => {
     setRenderError(null);
     try {
       const mod = await import("mermaid");
+      // @ts-ignore
       const mermaid = (mod.default ?? mod) as typeof import("mermaid");
+      // @ts-ignore
       mermaid.initialize({
         startOnLoad: false,
         theme: "default",
         securityLevel: "loose",
         flowchart: { useMaxWidth: false },
       });
-
+      // @ts-ignore
       const { svg, bindFunctions } = await mermaid.render(
         `chart-${id}`,
         diagramCode,
@@ -214,13 +207,11 @@ function Detail({ id }: { id: string }) {
     }
   };
 
-  // Debounced live render on code changes
   const debouncedRender = useDebounce(renderDiagram, 500);
   useEffect(() => {
     if (code) debouncedRender(code);
   }, [code, debouncedRender]);
 
-  // Regenerate via API
   const onRegenerate = async () => {
     setBackendError(null);
     try {
@@ -247,7 +238,6 @@ function Detail({ id }: { id: string }) {
     }
   };
 
-  // Save via API
   const onSave = async () => {
     setBackendError(null);
     try {
@@ -266,7 +256,6 @@ function Detail({ id }: { id: string }) {
     }
   };
 
-  // Toggle public flag via API
   const onTogglePublic = async (value: boolean) => {
     setIsPublic(value);
     try {
@@ -283,7 +272,6 @@ function Detail({ id }: { id: string }) {
     }
   };
 
-  // Fullscreen listener
   useEffect(() => {
     const onChange = () => setIsFs(!!document.fullscreenElement);
     document.addEventListener("fullscreenchange", onChange);
@@ -509,7 +497,7 @@ function Detail({ id }: { id: string }) {
                           <Button
                             variant="outline"
                             size="icon"
-                            type="button"              // prevent it from acting as a form submit
+                            type="button" // prevent it from acting as a form submit
                             aria-label="Export diagram"
                           >
                             <Download size={16} />
@@ -523,7 +511,9 @@ function Detail({ id }: { id: string }) {
                     <DialogContent className="max-w-xs">
                       <DialogHeader>
                         <DialogTitle>Export Diagram</DialogTitle>
-                        <DialogDescription>Choose your format</DialogDescription>
+                        <DialogDescription>
+                          Choose your format
+                        </DialogDescription>
                       </DialogHeader>
                       <div className="mt-4 flex flex-col gap-2">
                         <Button
@@ -550,12 +540,22 @@ function Detail({ id }: { id: string }) {
                   {/* Preview‐only fullscreen */}
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button variant="outline" size="icon" onClick={togglePreviewFs}>
-                        {isPreviewFs ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={togglePreviewFs}
+                      >
+                        {isPreviewFs ? (
+                          <Minimize2 size={16} />
+                        ) : (
+                          <Maximize2 size={16} />
+                        )}
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent>
-                      {isPreviewFs ? "Exit preview full screen" : "Preview full screen"}
+                      {isPreviewFs
+                        ? "Exit preview full screen"
+                        : "Preview full screen"}
                     </TooltipContent>
                   </Tooltip>
                 </div>

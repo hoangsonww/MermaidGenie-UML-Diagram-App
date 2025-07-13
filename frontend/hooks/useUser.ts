@@ -5,17 +5,20 @@ import api from "../lib/api";
 export default function useUser() {
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
-  const fetcher = (url: string) =>
-    api
-      .get(url, { headers: { Authorization: `Bearer ${token}` } })
-      .then((r) => r.data);
+
+  const shouldFetch = Boolean(token);
+
   const { data, error, mutate } = useSWR(
-    token ? "/api/auth/me" : null,
-    fetcher,
+    shouldFetch ? "/api/auth/me" : null,
+    (url) =>
+      api
+        .get(url, { headers: { Authorization: `Bearer ${token}` } })
+        .then((r) => r.data),
   );
+
   return {
-    user: data as any,
-    loading: !error && !data,
+    user: shouldFetch ? data : null,
+    loading: shouldFetch && !error && !data,
     mutate,
   };
 }

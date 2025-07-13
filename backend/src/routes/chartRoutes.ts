@@ -1,4 +1,3 @@
-// src/routes/chartRoutes.ts
 import { Router } from "express";
 import {
   createChart,

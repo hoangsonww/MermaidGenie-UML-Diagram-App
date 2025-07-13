@@ -1,11 +1,26 @@
 {
   "name": "mermaidgenie-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "An AI-powered tool for generating Mermaid diagrams from natural language descriptions.",
+  "author": "Son Nguyen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hoangsonww/MermaidGenie-Diagram-App.git"
+  },
+  "keywords": [
+    "mermaid",
+    "diagram",
+    "ai",
+    "natural language processing",
+    "visualization",
+    "uml"
+  ],
   "main": "dist/index.js",
   "scripts": {
     "lint": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,scss,md,html}\"",
-    "format": "npm run lint"
+    "format": "npm run check && npm run lint",
+    "check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,scss,md,html}\""
   },
   "dependencies": {
     "prettier": "^3.6.2"
@@ -13,5 +28,5 @@
   "devDependencies": {
     "typescript": "^5.5.3"
   },
-  "private": true
+  "private": false
 }

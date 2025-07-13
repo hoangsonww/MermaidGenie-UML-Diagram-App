@@ -1,4 +1,3 @@
-// src/routes/authRoutes.ts
 import { Router } from "express";
 import {
   register,
@@ -6,6 +5,8 @@ import {
   getProfile,
   updateProfile,
   changePassword,
+  verifyEmail,
+  resetPassword,
 } from "../controllers/authController";
 import { authenticate } from "../middleware/authMiddleware";
 
@@ -137,5 +138,83 @@ router.put("/me", authenticate, updateProfile);
  *         description: Password updated
  */
 router.put("/me/password", authenticate, changePassword);
+
+/**
+ * @swagger
+ * /api/auth/me/password:
+ *   put:
+ *     summary: Change current user password
+ *     tags: [Auth]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [currentPassword, newPassword]
+ *             properties:
+ *               currentPassword:
+ *                 type: string
+ *               newPassword:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Password updated
+ */
+router.put("/me/password", authenticate, changePassword);
+
+/**
+ * @swagger
+ * /api/auth/verify-email:
+ *   post:
+ *     summary: Verify if an email is registered
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [email]
+ *             properties:
+ *               email:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Returns { exists: boolean }
+ *       400:
+ *         description: Email not provided
+ */
+router.post("/verify-email", verifyEmail);
+
+/**
+ * @swagger
+ * /api/auth/reset-password:
+ *   post:
+ *     summary: Reset password for a user by email
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [email, newPassword]
+ *             properties:
+ *               email:
+ *                 type: string
+ *               newPassword:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Password reset successfully
+ *       400:
+ *         description: Missing email or newPassword
+ *       404:
+ *         description: User not found
+ */
+router.post("/reset-password", resetPassword);
 
 export default router;

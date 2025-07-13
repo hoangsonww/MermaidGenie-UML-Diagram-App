@@ -1,4 +1,3 @@
-// src/utils/renderMermaid.ts
 import mermaid from "mermaid";
 import { toast } from "sonner";
 
@@ -9,7 +8,6 @@ mermaid.initialize({
 });
 
 export async function renderMermaid(rawCode: string, elementId: string) {
-  // Strip ```mermaid…``` fences
   const fenceRegex = /^```mermaid\s*([\s\S]*?)```$/;
   const match = fenceRegex.exec(rawCode.trim());
   const code = match ? match[1].trim() : rawCode.trim();
@@ -23,7 +21,6 @@ export async function renderMermaid(rawCode: string, elementId: string) {
       container.innerHTML = svg;
     } else {
       console.warn(`No container found for #${elementId}, skipping render.`);
-      // swallow the "error"—we'll let the next effect try again if needed
     }
   } catch (e: any) {
     console.error("Mermaid render error:", e);

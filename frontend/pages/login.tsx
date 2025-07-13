@@ -88,6 +88,16 @@ export default function Login() {
                 Register here
               </Link>
             </p>
+
+            <p className="text-xs text-center text-muted-foreground">
+              Forgot your password?{" "}
+              <Link
+                href="/reset-password"
+                className="underline hover:text-primary"
+              >
+                Reset it
+              </Link>
+            </p>
           </form>
         </Card>
       </section>

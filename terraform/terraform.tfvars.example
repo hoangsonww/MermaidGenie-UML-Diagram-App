@@ -1,0 +1,8 @@
+aws_region           = "us-east-1"
+environment          = "prod"
+frontend_bucket_name = "my-mermaidgenie-frontend-prod"
+
+# If you have a custom domain, uncomment & fill these:
+# domain_name       = "www.example.com"
+# certificate_arn   = "arn:aws:acm:us-east-1:123456789012:certificate/..."
+

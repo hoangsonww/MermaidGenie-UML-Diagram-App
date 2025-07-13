@@ -1,4 +1,3 @@
-// src/pages/profile.tsx
 "use client";
 
 import Head from "next/head";
@@ -30,7 +29,6 @@ function ProfileInner() {
   });
   const [loading, setLoading] = useState(false);
 
-  // Initialize form with existing user data
   useEffect(() => {
     if (user) {
       setState({
@@ -41,7 +39,6 @@ function ProfileInner() {
     }
   }, [user]);
 
-  // Save updated profile
   async function save() {
     setLoading(true);
     try {
@@ -63,7 +60,6 @@ function ProfileInner() {
     }
   }
 
-  // Reset form to saved state
   function resetForm() {
     if (user) {
       setState({

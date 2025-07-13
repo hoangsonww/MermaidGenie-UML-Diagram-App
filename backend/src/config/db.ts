@@ -1,10 +1,13 @@
-// src/config/db.ts
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-// ensure .env is loaded even if this file is imported before index.ts
 dotenv.config();
 
+/**
+ * Connect to MongoDB using Mongoose.
+ * Reads connection string from environment variables.
+ * Throws an error if connection fails.
+ */
 export const connectDB = async () => {
   const uri = process.env.MONGO_URI || process.env.DATABASE_URL;
   if (!uri) {

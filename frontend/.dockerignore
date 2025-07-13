@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+out
+tests
+shell
+aws
+.git
+.vscode
+*.log

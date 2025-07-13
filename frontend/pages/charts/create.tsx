@@ -1,4 +1,3 @@
-// src/pages/charts/create.tsx
 "use client";
 
 import Head from "next/head";
@@ -64,8 +63,8 @@ function CreateInner() {
           <div className="text-center space-y-2">
             <h1 className="text-3xl font-extrabold">Generate a Diagram</h1>
             <p className="text-sm text-muted-foreground">
-              Describe in your natural tone - we’ll translate them into a Mermaid UML
-              chart!
+              Describe in your natural tone - we’ll translate them into a
+              Mermaid UML chart!
             </p>
           </div>
 

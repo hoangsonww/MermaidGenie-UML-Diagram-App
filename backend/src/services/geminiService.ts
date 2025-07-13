@@ -1,4 +1,3 @@
-// src/services/geminiService.ts
 import {
   GoogleGenerativeAI,
   HarmCategory,
@@ -15,7 +14,8 @@ export type ChatMessage = {
 const DEFAULT_SYSTEM_INSTRUCTION = `
 You are MermaidGenie Assistant. When given a user description of a UML class diagram, output ONLY the Mermaid diagram code.
 Start with \`\`\`mermaid\` and end with \`\`\`.
-Do not include any extra explanation.
+Do not include any extra explanation. Your response MUST be a valid Mermaid code block that can be rendered in a Mermaid diagram viewer.
+It MUST be a complete and valid Mermaid code block - you must NOT return invalid or malformed Mermaid code.
 `;
 
 export async function generateMermaidCode(
@@ -30,7 +30,7 @@ export async function generateMermaidCode(
   // Initialize the Gemini client
   const genAI = new GoogleGenerativeAI(apiKey);
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
+    model: "gemini-2.0-flash-lite",
     systemInstruction: DEFAULT_SYSTEM_INSTRUCTION,
   });
 
@@ -38,7 +38,7 @@ export async function generateMermaidCode(
     temperature: 0.2,
     topP: 0.9,
     topK: 40,
-    maxOutputTokens: 2048,
+    maxOutputTokens: 8192,
   };
 
   const safetySettings = [
@@ -61,7 +61,6 @@ export async function generateMermaidCode(
   ];
 
   // Start the chat session.
-  // Note: we pass only user/assistant history here, *not* the system instruction.
   const chatSession = model.startChat({
     generationConfig,
     safetySettings,
@@ -76,6 +75,6 @@ export async function generateMermaidCode(
   if (!raw) {
     throw new Error("Failed to get text response from Gemini");
   }
-  // text() is a function
+
   return raw().trim();
 }

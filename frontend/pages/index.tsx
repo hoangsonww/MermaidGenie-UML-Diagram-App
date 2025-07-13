@@ -1,4 +1,3 @@
-// src/pages/index.tsx
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -28,7 +27,6 @@ import {
 } from "@/components/ui/accordion";
 import Head from "next/head";
 
-/* ───────── helpers: intersection count-up ───────── */
 function useCountUp(target: number) {
   const [val, setVal] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -58,7 +56,6 @@ function useCountUp(target: number) {
   return { ref, val };
 }
 
-/* ───────── data ───────── */
 const rotatingA = ["description", "idea", "thought", "story", "sketch"];
 const rotatingB = ["diagram", "class-map", "model", "blueprint", "UML"];
 
@@ -204,9 +201,7 @@ const faqs = [
   },
 ];
 
-/* ───────── component ───────── */
 export default function Home() {
-  /* headline rotator */
   const [idx, setIdx] = useState(0);
   useEffect(() => {
     const int = setInterval(
@@ -215,13 +210,9 @@ export default function Home() {
     );
     return () => clearInterval(int);
   }, []);
-
-  /* stat counters */
   const dgm = useCountUp(12000);
   const star = useCountUp(49);
   const ctrs = useCountUp(138);
-
-  /* page title */
   const pageTitle = "MermaidGenie – AI UML diagrams in seconds";
 
   return (
@@ -234,7 +225,7 @@ export default function Home() {
         />
       </Head>
       <main className="w-full flex flex-col items-center gap-28 pb-32">
-        {/* ───────── Hero ───────── */}
+        {/*  Hero  */}
         <section className="relative w-full max-w-6xl p-[3px] rounded-2xl overflow-hidden animated-border">
           <div className="bg-background rounded-[inherit] py-24 px-6 text-center">
             <h1 className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-6">
@@ -271,7 +262,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───────── Stats counters ───────── */}
+        {/*  Stats counters  */}
         <section className="grid sm:grid-cols-3 gap-8 w-full max-w-6xl text-center">
           <div ref={dgm.ref} className="space-y-1">
             <p className="text-4xl font-extrabold text-primary">
@@ -291,7 +282,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───────── Feature grid ───────── */}
+        {/*  Feature grid  */}
         <section className="grid lg:grid-cols-3 gap-8 w-full max-w-7xl px-4">
           {features.map((f) => (
             <div
@@ -305,7 +296,7 @@ export default function Home() {
           ))}
         </section>
 
-        {/* ───────── Use-cases cards ───────── */}
+        {/*  Use-cases cards  */}
         <section className="w-full max-w-7xl px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
             Where teams use Genie
@@ -326,7 +317,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───────── Tech we love ───────── */}
+        {/*  Tech we love  */}
         <section className="w-full max-w-6xl px-4">
           <h2 className="text-3xl font-bold text-center mb-8">
             Built with modern tech
@@ -341,7 +332,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───────── Testimonials ───────── */}
+        {/*  Testimonials  */}
         <section className="w-full max-w-7xl px-4">
           <h2 className="text-3xl font-bold text-center mb-8">Loved by devs</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -359,7 +350,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───────── Pricing ───────── */}
+        {/*  Pricing  */}
         <section className="w-full max-w-7xl px-4">
           <h2 className="text-3xl font-bold text-center mb-6">Pricing</h2>
           <p className="text-center text-sm text-muted-foreground mb-8">
@@ -390,7 +381,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───────── Roadmap ───────── */}
+        {/*  Roadmap  */}
         <section className="w-full max-w-6xl px-4">
           <h2 className="text-3xl font-bold text-center mb-8">Roadmap</h2>
           <div className="relative pl-4 border-l">
@@ -404,7 +395,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───────── FAQ ───────── */}
+        {/*  FAQ  */}
         <section className="w-full max-w-5xl px-4">
           <h2 className="text-3xl font-bold text-center mb-8">FAQ</h2>
           <Accordion type="single" collapsible>
@@ -425,7 +416,7 @@ export default function Home() {
           </Accordion>
         </section>
 
-        {/* ───────── Open-source callout ───────── */}
+        {/*  Open-source callout  */}
         <section className="w-full max-w-6xl px-4">
           <div className="rounded-xl border bg-card p-10 flex flex-col md:flex-row items-center gap-6">
             <GitBranch size={36} className="text-primary shrink-0" />
@@ -442,7 +433,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───────── Newsletter ───────── */}
+        {/*  Newsletter  */}
         <section className="w-full max-w-6xl rounded-xl bg-card border p-8 flex flex-col md:flex-row gap-6 items-center">
           <Mail size={32} className="text-primary shrink-0" />
           <div className="flex-1">
@@ -471,7 +462,7 @@ export default function Home() {
           </form>
         </section>
 
-        {/* ───────── CTA banner ───────── */}
+        {/*  CTA banner  */}
         <section className="w-full max-w-6xl rounded-xl bg-gradient-to-br from-primary via-accent to-secondary p-[2px]">
           <div className="bg-background rounded-[inherit] px-8 py-14 flex flex-col md:flex-row gap-6 items-center justify-between">
             <div>
@@ -488,7 +479,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───────── keyframes ───────── */}
+        {/*  keyframes  */}
         <style jsx>{`
           .animated-border::before {
             content: "";

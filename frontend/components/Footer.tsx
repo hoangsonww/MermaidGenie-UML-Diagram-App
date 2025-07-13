@@ -1,4 +1,3 @@
-// src/components/Footer.tsx
 import Link from "next/link";
 import { Github, Heart, Linkedin } from "lucide-react";
 

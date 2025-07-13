@@ -1,4 +1,3 @@
-// src/pages/charts/index.tsx
 "use client";
 
 import Link from "next/link";
@@ -28,10 +27,12 @@ export default function ChartsPage() {
 function ChartsInner() {
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : "";
-  const { data, error } = useSWR<Chart[]>(token ? "/api/charts" : null, (url) =>
-    api
-      .get(url, { headers: { Authorization: `Bearer ${token}` } })
-      .then((r) => r.data),
+  const { data, error } = useSWR<Chart[]>(
+    token ? "/api/charts" : null,
+    (url: any) =>
+      api
+        .get(url, { headers: { Authorization: `Bearer ${token}` } })
+        .then((r) => r.data),
   );
 
   if (error) {
@@ -76,6 +77,7 @@ function ChartsInner() {
             You haven’t created any charts yet.
           </p>
           <Link href="/charts/create">
+            {/* @ts-ignore */}
             <Button size="md" className="px-8 py-4">
               Create your first chart
             </Button>

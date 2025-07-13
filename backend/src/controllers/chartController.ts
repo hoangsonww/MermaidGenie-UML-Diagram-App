@@ -4,7 +4,12 @@ import { Chart } from "../models/Chart";
 import { generateMermaidCode } from "../services/geminiService";
 import { AuthRequest } from "../middleware/authMiddleware";
 
-// Create a new chart
+/**
+ * Create a new chart based on user input.
+ *
+ * @param req - Authenticated request containing chart details.
+ * @param res - Response object to send the created chart or error.
+ */
 export const createChart = async (req: AuthRequest, res: Response) => {
   const { title, prompt, isPublic } = req.body;
   try {
@@ -26,7 +31,12 @@ export const createChart = async (req: AuthRequest, res: Response) => {
   }
 };
 
-// List all charts for the current user
+/**
+ * List all charts owned by the current user.
+ *
+ * @param req - Authenticated request to get user charts.
+ * @param res - Response object to send the list of charts or error.
+ */
 export const listCharts = async (req: AuthRequest, res: Response) => {
   try {
     const ownerId = (req.user!._id as any).toString();
@@ -38,7 +48,13 @@ export const listCharts = async (req: AuthRequest, res: Response) => {
   }
 };
 
-// Get one chart (public or owned)
+/**
+ * Get a specific chart by ID.
+ * If the chart is private, check if the user is authorized to view it.
+ *
+ * @param req - Request object containing the chart ID in params.
+ * @param res - Response object to send the chart or error.
+ */
 export const getChart = async (req: AuthRequest, res: Response) => {
   const { id } = req.params;
   try {
@@ -71,7 +87,13 @@ export const getChart = async (req: AuthRequest, res: Response) => {
   }
 };
 
-// Regenerate an existing chart
+/**
+ * Regenerate the mermaid code for a chart based on its prompt.
+ * Only the owner can regenerate the chart.
+ *
+ * @param req - Authenticated request containing the chart ID in params.
+ * @param res - Response object to send the updated chart or error.
+ */
 export const regenerateChart = async (req: AuthRequest, res: Response) => {
   const { id } = req.params;
   try {
@@ -94,6 +116,9 @@ export const regenerateChart = async (req: AuthRequest, res: Response) => {
 
 /**
  * Update an existing chart's prompt and/or mermaidCode (Save changes)
+ *
+ * @param req - Authenticated request containing the chart ID in params and updated data in body.
+ * @param res - Response object to send the updated chart or error.
  */
 export const updateChart = async (req: AuthRequest, res: Response) => {
   const { id } = req.params;

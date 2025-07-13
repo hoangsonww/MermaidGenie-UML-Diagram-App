@@ -1,4 +1,3 @@
-// src/middleware/authMiddleware.ts
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { User, IUser } from "../models/User";
@@ -7,6 +6,15 @@ export interface AuthRequest extends Request {
   user?: IUser;
 }
 
+/**
+ * Middleware to authenticate user requests using JWT.
+ * It checks for a Bearer token in the Authorization header,
+ * verifies it, and attaches the user to the request object.
+ *
+ * @param req - Express request object
+ * @param res - Express response object
+ * @param next - Next middleware function
+ */
 export const authenticate = async (
   req: AuthRequest,
   res: Response,

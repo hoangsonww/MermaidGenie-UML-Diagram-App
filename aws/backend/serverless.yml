@@ -1,0 +1,39 @@
+service: mermaidgenie-backend
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  environment:
+    MONGODB_URI: ${env:MONGODB_URI}
+    JWT_SECRET: ${env:JWT_SECRET}
+    NODE_OPTIONS: --enable-source-maps
+  lambdaHashingVersion: 20201221
+
+functions:
+  api:
+    handler: src/app.handler
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: ANY
+
+package:
+  individually: false
+  exclude:
+    - node_modules/**
+    - aws/**
+    - tests/**
+
+custom:
+  dotenv:
+    basePath: ../../
+    include:
+      - MONGODB_URI
+      - JWT_SECRET
