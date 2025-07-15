@@ -26,6 +26,7 @@
 ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black)
 ![JWT](https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 ![Google AI](https://img.shields.io/badge/Google_AI-4285F4?style=flat-square&logo=google&logoColor=white)
 ![AWS](https://img.shields.io/badge/Amazon_Web_Services-232F3E?style=flat-square&logo=task&logoColor=white)
@@ -471,6 +472,14 @@ docker-compose up --build
 ```
 
 This will start both services, making it easy to develop and test the entire application locally as you can get both the frontend and backend running with a single command!
+
+### Kubernetes
+
+For production deployments, we recommend using Kubernetes for orchestration. The Docker images can be deployed to a Kubernetes cluster, and you can use Helm charts for easier management.
+
+We also have a `k8s/` directory with example Kubernetes manifests to get you started.
+
+Feel free to modify these manifests to suit your production environment.
 
 ## 🤝 Contributing
 
