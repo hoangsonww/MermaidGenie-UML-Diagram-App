@@ -349,6 +349,9 @@ MermaidGenie uses serverless and static‐hosting services:
 
 _All credentials (AWS keys, Atlas URI, JWT secret, GHCR token, etc.) are stored encrypted in GitHub Secrets._
 
+> [!TIP]
+> For more details on how to deploy, check the `aws/` and `terraform/` directories for configuration files and scripts, and the [AWS deployment guide](docs/aws-deployment.md).
+
 ## 🛠 Scripts & Utilities
 
 We also have several utility scripts to help with development and maintenance, as well as a Makefile for common tasks, which can be run straight from the command line in the root directory.
