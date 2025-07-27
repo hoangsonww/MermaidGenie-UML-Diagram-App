@@ -1,4 +1,3 @@
-// pages/404.tsx
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -8,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap } from "lucide-react";
 
 export default function Custom404() {
-  // Optional: fun counter or animation on 404 number
   const { ref: fourRef, val: fourVal } = useCountUp(4);
   const { ref: zeroRef, val: zeroVal } = useCountUp(0);
 
@@ -16,7 +14,10 @@ export default function Custom404() {
     <>
       <Head>
         <title>404 – Page Not Found | MermaidGenie</title>
-        <meta name="description" content="Oops! The page you’re looking for doesn’t exist." />
+        <meta
+          name="description"
+          content="Oops! The page you’re looking for doesn’t exist."
+        />
       </Head>
       <main className="w-full min-h-screen flex flex-col items-center justify-center gap-8 p-4">
         <div className="text-center space-y-4">
@@ -27,7 +28,8 @@ export default function Custom404() {
           </h1>
           <h2 className="text-2xl font-semibold">Page Not Found</h2>
           <p className="text-lg text-muted-foreground max-w-md mx-auto">
-            Sorry, we couldn’t find the page you’re looking for. It might have been moved or deleted.
+            Sorry, we couldn’t find the page you’re looking for. It might have
+            been moved or deleted.
           </p>
           <Link href="/">
             <Button size="lg" className="group">
@@ -67,7 +69,7 @@ function useCountUp(target: number) {
         };
         requestAnimationFrame(step);
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
     io.observe(el);
     return () => io.disconnect();

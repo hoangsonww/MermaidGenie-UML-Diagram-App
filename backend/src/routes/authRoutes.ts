@@ -183,7 +183,7 @@ router.put("/me/password", authenticate, changePassword);
  *                 type: string
  *     responses:
  *       200:
- *         description: Returns { exists: boolean }
+ *         description: Returns whether the email is registered
  *       400:
  *         description: Email not provided
  */

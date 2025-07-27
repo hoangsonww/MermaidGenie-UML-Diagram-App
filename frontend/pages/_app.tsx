@@ -4,6 +4,25 @@ import { ThemeProvider } from "next-themes";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
+import { useEffect } from "react";
+import { useTheme } from "next-themes";
+
+function MetaUpdater() {
+  const { resolvedTheme } = useTheme();
+
+  useEffect(() => {
+    document
+      .querySelectorAll('meta[name="theme-color"]')
+      .forEach((el) =>
+        el.setAttribute(
+          "content",
+          resolvedTheme === "dark" ? "#1e1b18" : "#ffffff",
+        ),
+      );
+  }, [resolvedTheme]);
+
+  return null;
+}
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -15,6 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </main>
         <Footer />
         <Toaster richColors position="bottom-right" />
+        <MetaUpdater />
       </div>
     </ThemeProvider>
   );

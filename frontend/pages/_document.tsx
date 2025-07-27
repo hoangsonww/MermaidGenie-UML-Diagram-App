@@ -48,7 +48,6 @@ export default function Document() {
         <link rel="shortcut icon" href="/favicon.ico" />
 
         {/* Theme & tile colors */}
-        <meta name="theme-color" content="#ffffff" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
 

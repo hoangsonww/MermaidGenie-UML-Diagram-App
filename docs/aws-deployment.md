@@ -26,6 +26,7 @@ aws/
 1. **AWS CLI** v2 installed and configured (`aws configure`).
 2. **Node.js** & **npm** (≥14) installed.
 3. **Serverless Framework** installed globally:
+
    ```bash
    npm install -g serverless
    ```
@@ -50,13 +51,13 @@ All backend resources (API, Lambdas, IAM roles) are defined in `aws/backend/serv
 
 ### 1. serverless.yml
 
-* **Service**: `mermaidgenie-api`
-* **Provider**: AWS Lambda (Node.js 18.x)
-* **Functions**:
+- **Service**: `mermaidgenie-api`
+- **Provider**: AWS Lambda (Node.js 18.x)
+- **Functions**:
+  - `app` (Express handler)
 
-  * `app` (Express handler)
-* **Environment**: Uses `MONGO_URI`, `JWT_SECRET`, `OPENAI_API_KEY`
-* **Plugins**: `serverless-webpack` / others as configured
+- **Environment**: Uses `MONGO_URI`, `JWT_SECRET`, `OPENAI_API_KEY`
+- **Plugins**: `serverless-webpack` / others as configured
 
 ### 2. scripts/deploy.sh
 
@@ -175,12 +176,14 @@ chmod +x aws/frontend/scripts/invalidate.sh
    export FRONTEND_BUCKET="mermaidgenie-frontend-dev"
    export CLOUDFRONT_DIST_ID="E123ABCDEF"
    ```
+
 2. **Deploy backend**:
 
    ```bash
    cd aws/backend/scripts
    ./deploy.sh dev
    ```
+
 3. **Deploy frontend**:
 
    ```bash
@@ -188,10 +191,11 @@ chmod +x aws/frontend/scripts/invalidate.sh
    ./deploy.sh dev
    ./invalidate.sh dev
    ```
+
 4. 🎉 **MermaidGenie** is now live!
 
-  * **API URL** from Serverless output
-  * **Web URL**: `https://$CLOUDFRONT_DIST_ID.cloudfront.net`
+- **API URL** from Serverless output
+- **Web URL**: `https://$CLOUDFRONT_DIST_ID.cloudfront.net`
 
 ---
 
@@ -216,8 +220,8 @@ aws s3 rm s3://$FRONTEND_BUCKET --recursive --region "$AWS_REGION"
 
 You can integrate these scripts into your GitHub Actions or other CI pipelines:
 
-* **Backend**: run `aws/backend/scripts/deploy.sh ${{ matrix.stage }}`
-* **Frontend**: run `aws/frontend/scripts/deploy.sh ${{ matrix.stage }}` then `invalidate.sh`
+- **Backend**: run `aws/backend/scripts/deploy.sh ${{ matrix.stage }}`
+- **Frontend**: run `aws/frontend/scripts/deploy.sh ${{ matrix.stage }}` then `invalidate.sh`
 
 Store sensitive values (`MONGO_URI`, `JWT_SECRET`, etc.) securely in your CI secrets.
 
