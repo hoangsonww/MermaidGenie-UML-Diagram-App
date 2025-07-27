@@ -132,7 +132,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [vuln-scan]
     steps:
-      - name: Deploying…
+      - name: Deploying...
         run: |
           echo "Deploying to Vercel & AWS..."
           echo "Deployed! 🎉"

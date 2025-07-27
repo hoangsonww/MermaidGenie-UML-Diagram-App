@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "🔧 [frontend_setup] Installing deps and building frontend…"
+echo "🔧 [frontend_setup] Installing deps and building frontend..."
 
 cd frontend
 
