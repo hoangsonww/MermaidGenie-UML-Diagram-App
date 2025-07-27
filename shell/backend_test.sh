@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "🧪 [backend_test] Running backend tests…"
+echo "🧪 [backend_test] Running backend tests..."
 
 cd backend
 

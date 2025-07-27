@@ -92,7 +92,7 @@ function CreateInner() {
               <textarea
                 id="prompt"
                 className="w-full min-h-[8rem] resize-y rounded-md border border-border bg-background p-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                placeholder="E.g. A Student can enroll in multiple Courses, a Course has a code and credits…"
+                placeholder="E.g. A Student can enroll in multiple Courses, a Course has a code and credits..."
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 required

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -17,6 +18,7 @@ body {
 }
 
 html {
+  font-family: var(--font-sans);
   scroll-behavior: smooth;
 }
 

@@ -142,7 +142,7 @@ function ProfileInner() {
               </Label>
               <Textarea
                 id="bio"
-                placeholder="A little about yourself…"
+                placeholder="A little about yourself..."
                 rows={4}
                 value={state.bio}
                 onChange={(e) =>
@@ -158,7 +158,7 @@ function ProfileInner() {
               </Label>
               <Input
                 id="avatarUrl"
-                placeholder="https://…"
+                placeholder="https://..."
                 value={state.avatarUrl}
                 onChange={(e) =>
                   setState((s) => ({ ...s, avatarUrl: e.target.value }))

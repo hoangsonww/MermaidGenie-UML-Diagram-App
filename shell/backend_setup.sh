@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "🔧 [backend_setup] Installing deps and building backend…"
+echo "🔧 [backend_setup] Installing deps and building backend..."
 
 cd backend
 

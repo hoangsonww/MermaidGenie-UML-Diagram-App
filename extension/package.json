@@ -1,0 +1,100 @@
+{
+  "name": "mermaidgenie-viewer",
+  "displayName": "MermaidGenie Viewer",
+  "description": "Embed MermaidGenie (AI‑powered Mermaid diagram editor) directly in VS Code.",
+  "version": "1.1.2",
+  "publisher": "hoangsonw",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.50.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hoangsonww/MermaidGenie-UML-Diagram-App.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hoangsonww/MermaidGenie-UML-Diagram-App/issues"
+  },
+  "author": "Son Nguyen",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:mermaidgenieViewer.openPanel"
+  ],
+  "main": "./out/extension.js",
+  "icon": "images/logo.png",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "MermaidGenie Viewer",
+      "properties": {
+        "mermaidgenieViewer.panelTitle": {
+          "type": "string",
+          "default": "MermaidGenie",
+          "description": "Title of the Webview panel."
+        },
+        "mermaidgenieViewer.viewColumn": {
+          "type": "number",
+          "default": 1,
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "enumDescriptions": [
+            "Active column",
+            "First column",
+            "Second column",
+            "Third column"
+          ],
+          "description": "Editor column to open the panel in."
+        },
+        "mermaidgenieViewer.retainContext": {
+          "type": "boolean",
+          "default": true,
+          "description": "Keep the panel state when hidden."
+        },
+        "mermaidgenieViewer.enableScripts": {
+          "type": "boolean",
+          "default": true,
+          "description": "Allow scripts in the iframe."
+        },
+        "mermaidgenieViewer.iframeWidth": {
+          "type": "string",
+          "default": "100%",
+          "description": "CSS width for the embedded iframe (e.g. '80%' or '600px')."
+        },
+        "mermaidgenieViewer.iframeHeight": {
+          "type": "string",
+          "default": "100%",
+          "description": "CSS height for the embedded iframe."
+        },
+        "mermaidgenieViewer.openOnStartup": {
+          "type": "boolean",
+          "default": false,
+          "description": "Open the panel automatically when VS Code starts."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "mermaidgenieViewer.openPanel",
+        "title": "MermaidGenie Viewer: Open Diagram Editor"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^12.20.55",
+    "@types/vscode": "^1.50.0",
+    "typescript": "^4.0.0",
+    "vsce": "^1.91.0"
+  }
+}

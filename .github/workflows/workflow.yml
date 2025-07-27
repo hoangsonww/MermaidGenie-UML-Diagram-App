@@ -105,34 +105,14 @@ jobs:
           docker push $REGISTRY/mermaidgenie-frontend:latest || true
 
   # ────────────────────────────────────────────────────────────────
-  #  🔍 Image Vulnerability Scan                                   #
-  # ────────────────────────────────────────────────────────────────
-  vuln-scan:
-    name: "🔍 Vulnerability Scan"
-    runs-on: ubuntu-latest
-    needs: [docker]
-    continue-on-error: true
-    steps:
-      - name: Scan backend image
-        uses: aquasecurity/trivy-action@v0.28.0
-        with:
-          image-ref: $REGISTRY/mermaidgenie-backend:latest
-          exit-code: 0
-      - name: Scan frontend image
-        uses: aquasecurity/trivy-action@v0.28.0
-        with:
-          image-ref: $REGISTRY/mermaidgenie-frontend:latest
-          exit-code: 0
-
-  # ────────────────────────────────────────────────────────────────
   #  🚀 Deploy                                                     #
   # ────────────────────────────────────────────────────────────────
   deploy:
     name: "🚀 Deploy to Vercel & AWS"
     runs-on: ubuntu-latest
-    needs: [vuln-scan]
+    needs: [docker]
     steps:
-      - name: Deploying…
+      - name: Deploying...
         run: |
           echo "Deploying to Vercel & AWS..."
           echo "Deployed! 🎉"

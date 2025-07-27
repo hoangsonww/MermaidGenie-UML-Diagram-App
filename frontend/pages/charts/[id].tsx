@@ -488,7 +488,7 @@ function Detail({ id }: { id: string }) {
               <div className="flex justify-between items-center mb-2">
                 <h2 className="text-lg font-semibold">Diagram Preview</h2>
                 <div className="flex gap-2">
-                  {/* …inside your Diagram Preview card header… */}
+                  {/* ...inside your Diagram Preview card header... */}
                   <Dialog>
                     <Tooltip>
                       {/* single trigger that does both: tooltip on hover + opens dialog on click */}

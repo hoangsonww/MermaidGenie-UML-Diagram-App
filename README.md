@@ -46,6 +46,7 @@
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)
 ![GitHub Container Registry](https://img.shields.io/badge/GitHub_Container_Registry-2088FF?style=flat-square&logo=github&logoColor=white)
 ![OpenAPI](https://img.shields.io/badge/OpenAPI-85EA2D?style=flat-square&logo=openapi-initiative&logoColor=black)
+![VS Code Extension](https://img.shields.io/badge/VS_Code_Extension-007ACC?style=flat-square&logo=gitextensions&logoColor=white)
 
 ---
 
@@ -69,9 +70,10 @@
 12. [Testing](#-testing)
 13. [CI/CD with GitHub Actions](#-cicd-with-github-actions)
 14. [Docker & Containerization](#-docker--containerization)
-15. [Contributing](#-contributing)
-16. [License](#-license)
-17. [Author](#-author)
+15. [VS Code Extension](#-vs-code-extension)
+16. [Contributing](#-contributing)
+17. [License](#-license)
+18. [Author](#-author)
 
 ## 🧜‍♂️ About MermaidGenie
 
@@ -483,6 +485,42 @@ For production deployments, we recommend using Kubernetes for orchestration. The
 We also have a `k8s/` directory with example Kubernetes manifests to get you started.
 
 Feel free to modify these manifests to suit your production environment.
+
+## ⚛️ VS Code Extension
+
+MermaidGenie also comes with a VS Code extension that lets you create, edit and share Mermaid diagrams without leaving your editor.
+
+**Key Features**
+
+- **Instant Diagram Editor**  
+  Launch MermaidGenie in a side panel via the Command Palette.
+- **Live AI Generation**  
+  Type natural‑language prompts and see your diagram render in real time.
+- **Secure iframe**  
+  Loads `https://mermaidgenie.vercel.app` under a strict Content‑Security‑Policy.
+- **Persistent State**  
+  Your work (prompts, edits, history) stays alive across sessions.
+- **Panel Customization**  
+  Configure the panel title, column, iframe size, script permissions, and auto‑open behavior.
+
+To install the extension: Simply search for **MermaidGenie Viewer** in the VS Code Marketplace or go to [MermaidGenie Viewer](https://marketplace.visualstudio.com/items?itemName=hoangsonw.mermaidgenie-viewer) and click **Install**.
+
+**Usage**
+
+1. Open the **Command Palette** (`Ctrl+Shift+P` / `⌘+Shift+P`).
+2. Run **MermaidGenie Viewer: Open Diagram Editor**.
+3. Enter your prompt or paste Mermaid code, then edit & share.
+
+**Configuration**
+Open **Settings** → **Extensions** → **MermaidGenie Viewer** to adjust:
+
+- Panel title
+- Editor column (0=active, 1–3)
+- iframe width & height
+- Script permissions
+- Auto‑open on startup
+
+For full details, troubleshooting tips and advanced options, see [extension/README.md](extension/README.md).
 
 ## 🤝 Contributing
 

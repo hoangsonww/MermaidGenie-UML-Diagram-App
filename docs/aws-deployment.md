@@ -36,9 +36,9 @@ aws/
 
    ```bash
    export AWS_REGION="us-east-1"
-   export MONGO_URI="mongodb+srv://…"
+   export MONGO_URI="mongodb+srv://..."
    export JWT_SECRET="supersecret"
-   export OPENAI_API_KEY="sk-…"
+   export OPENAI_API_KEY="sk-..."
    export FRONTEND_BUCKET="mermaidgenie-frontend-$STAGE"
    export CLOUDFRONT_DIST_ID="E123ABCDEF..."
    ```
@@ -170,9 +170,9 @@ chmod +x aws/frontend/scripts/invalidate.sh
 
    ```bash
    export AWS_REGION="us-east-1"
-   export MONGO_URI="…"
-   export JWT_SECRET="…"
-   export OPENAI_API_KEY="…"
+   export MONGO_URI="..."
+   export JWT_SECRET="..."
+   export OPENAI_API_KEY="..."
    export FRONTEND_BUCKET="mermaidgenie-frontend-dev"
    export CLOUDFRONT_DIST_ID="E123ABCDEF"
    ```
