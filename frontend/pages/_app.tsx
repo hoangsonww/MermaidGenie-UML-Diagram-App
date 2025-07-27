@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
 import { useEffect } from "react";
 import { useTheme } from "next-themes";
+import { Analytics } from "@vercel/analytics/next"
 
 function MetaUpdater() {
   const { resolvedTheme } = useTheme();
@@ -27,6 +28,7 @@ function MetaUpdater() {
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <Analytics />
       <div className="font-sans flex min-h-screen flex-col">
         <Navbar />
         <main className="flex-1 w-full px-6 py-10 animate-in fade-in slide-in-from-bottom-4 duration-300">

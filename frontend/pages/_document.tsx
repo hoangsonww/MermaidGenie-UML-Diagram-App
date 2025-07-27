@@ -11,7 +11,7 @@ export default function Document() {
         />
 
         {/* PWA manifest */}
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="/manifest.json"/>
 
         {/* Android Chrome icons */}
         <link
@@ -45,35 +45,36 @@ export default function Document() {
           sizes="16x16"
           href="/favicon-16x16.png"
         />
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico"/>
 
         {/* Theme & tile colors */}
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
+        <meta name="msapplication-TileColor" content="#ffffff"/>
+        <meta name="msapplication-config" content="/browserconfig.xml"/>
+        <meta property="og:site_name" content="MermaidGenie"/>
 
         {/* Mobile Web App capable */}
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="MermaidGenie" />
+        <meta name="mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+        <meta name="apple-mobile-web-app-title" content="MermaidGenie"/>
 
         {/* Social / OpenGraph */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="MermaidGenie" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="MermaidGenie"/>
         <meta
           property="og:description"
           content="Create, share, and manage your Mermaid diagrams."
         />
-        <meta property="og:url" content="https://mermaidgenie.vercel.app" />
+        <meta property="og:url" content="https://mermaidgenie.vercel.app"/>
         <meta
           property="og:image"
           content="https://mermaidgenie.vercel.app/android-chrome-512x512.png"
         />
 
         {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@your_twitter_handle" />
-        <meta name="twitter:title" content="MermaidGenie" />
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:site" content="@your_twitter_handle"/>
+        <meta name="twitter:title" content="MermaidGenie"/>
         <meta
           name="twitter:description"
           content="Create, share, and manage your Mermaid diagrams."
@@ -92,12 +93,12 @@ export default function Document() {
           name="keywords"
           content="Mermaid, diagrams, UML, chart, generator, PWA"
         />
-        <meta name="author" content="Your Name or Company" />
-        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Your Name or Company"/>
+        <meta name="robots" content="index, follow"/>
       </Head>
       <body>
-        <Main />
-        <NextScript />
+      <Main/>
+      <NextScript/>
       </body>
     </Html>
   );
