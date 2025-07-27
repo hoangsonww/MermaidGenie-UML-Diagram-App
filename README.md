@@ -354,6 +354,10 @@ _All credentials (AWS keys, Atlas URI, JWT secret, GHCR token, etc.) are stored 
 > [!TIP]
 > For more details on how to deploy, check the `aws/` and `terraform/` directories for configuration files and scripts, and the [AWS deployment guide](docs/aws-deployment.md).
 
+<p align="center">
+  <img src="docs/gh.png" alt="Deployment Diagram" width="100%">
+</p>
+
 ## 🛠 Scripts & Utilities
 
 We also have several utility scripts to help with development and maintenance, as well as a Makefile for common tasks, which can be run straight from the command line in the root directory.
@@ -504,6 +508,10 @@ MermaidGenie also comes with a VS Code extension that lets you create, edit and 
   Configure the panel title, column, iframe size, script permissions, and auto‑open behavior.
 
 To install the extension: Simply search for **MermaidGenie Viewer** in the VS Code Marketplace or go to [MermaidGenie Viewer](https://marketplace.visualstudio.com/items?itemName=hoangsonw.mermaidgenie-viewer) and click **Install**.
+
+<p align="center">
+  <img src="docs/extension.png" alt="VS Code Extension" width="100%">
+</p>
 
 **Usage**
 
