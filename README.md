@@ -273,8 +273,9 @@ We also index `email` in `User` and `owner` in `Chart` for fast lookups.
 ### ⚙️ Backend Setup
 
 ```bash
-git clone https://github.com/yourname/mermaidgenie.git
-cd mermaidgenie/backend
+git clone https://github.com/hoangsonww/MermaidGenie-UML-Diagram-App.git
+cd MermaidGenie-UML-Diagram-App
+cd backend
 npm install
 
 cp .env.example .env         # fill: MONGO_URL, JWT_SECRET, OPENAI_KEY
