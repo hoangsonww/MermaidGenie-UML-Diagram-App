@@ -36,7 +36,21 @@ Please give it a try and share your feedback!
 
 ---
 
-## 📦 Installation
+## 🛠️ Launch with VS Code
+
+We also provide a `launch.json` file to quickly start the extension in a development environment. This allows you to test changes live:
+
+1. Open this folder in VS Code.
+2. Press `F5` to launch the Extension Development Host. Alternatively, go to the **Run and Debug** view and select **Launch Extension**.
+3. The MermaidGenie Viewer panel will open automatically.
+4. You can now test the extension, make changes, and see them live in the side panel.
+5. To stop debugging, close the Extension Development Host window or press `Shift+F5`.
+
+To customize the launch configuration, edit the `launch.json` file in the `.vscode` folder. You can change settings like the panel title, view column, and whether to retain context when switching files.
+
+---
+
+## 📦 VSIX Installation
 
 1. **Clone & navigate** into the extension folder:
 

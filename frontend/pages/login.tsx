@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { useRouter } from "next/router";
 import api from "@/lib/api";
@@ -8,16 +9,18 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import Link from "next/link";
 import Head from "next/head";
-import { Eye, EyeOff, Mail } from "lucide-react";
+import { Eye, EyeOff, Mail, Loader2 } from "lucide-react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+    setLoading(true);
     try {
       const { data } = await api.post("/api/auth/login", {
         email,
@@ -28,6 +31,8 @@ export default function Login() {
       router.push("/charts");
     } catch (e: any) {
       toast.error(e.response?.data?.message || "Authentication failed");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -59,6 +64,7 @@ export default function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={loading}
               />
             </div>
 
@@ -70,17 +76,31 @@ export default function Login() {
                 value={pw}
                 onChange={(e) => setPw(e.target.value)}
                 required
+                disabled={loading}
               />
               <button
                 type="button"
                 onClick={() => setShow(!show)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary"
+                disabled={loading}
               >
                 {show ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
             </div>
 
-            <Button className="w-full group">Sign in</Button>
+            <Button
+              type="submit"
+              className="w-full flex items-center justify-center"
+              disabled={loading}
+            >
+              {loading ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" /> Signing in…
+                </>
+              ) : (
+                "Sign in"
+              )}
+            </Button>
 
             <p className="text-xs text-center text-muted-foreground">
               No account?{" "}
