@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import Link from "next/link";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 import Head from "next/head";
 
 export default function ResetPassword() {
@@ -23,11 +23,15 @@ export default function ResetPassword() {
   const [showPw, setShowPw] = useState(false);
   const [showPw2, setShowPw2] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+
   async function handleVerify(e: React.FormEvent) {
     e.preventDefault();
     if (!email) {
-      return toast.error("Please enter your email");
+      toast.error("Please enter your email");
+      return;
     }
+    setLoading(true);
     try {
       const { data } = await api.post("/api/auth/verify-email", { email });
       if (data.exists) {
@@ -38,14 +42,18 @@ export default function ResetPassword() {
       }
     } catch (err: any) {
       toast.error(err.response?.data?.message || "Verification failed");
+    } finally {
+      setLoading(false);
     }
   }
 
   async function handleReset(e: React.FormEvent) {
     e.preventDefault();
     if (newPassword !== confirmPassword) {
-      return toast.error("Passwords do not match");
+      toast.error("Passwords do not match");
+      return;
     }
+    setLoading(true);
     try {
       await api.post("/api/auth/reset-password", {
         email,
@@ -55,6 +63,8 @@ export default function ResetPassword() {
       router.push("/login");
     } catch (err: any) {
       toast.error(err.response?.data?.message || "Reset failed");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -80,8 +90,22 @@ export default function ResetPassword() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={loading}
               />
-              <Button className="w-full">Verify Email</Button>
+              <Button
+                type="submit"
+                className="w-full flex items-center justify-center"
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Verifying…
+                  </>
+                ) : (
+                  "Verify Email"
+                )}
+              </Button>
               <p className="text-xs text-center text-muted-foreground">
                 Remembered your password?{" "}
                 <Link href="/login" className="underline hover:text-primary">
@@ -106,11 +130,13 @@ export default function ResetPassword() {
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   required
+                  disabled={loading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPw(!showPw)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary"
+                  disabled={loading}
                 >
                   {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
@@ -123,16 +149,31 @@ export default function ResetPassword() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   required
+                  disabled={loading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPw2(!showPw2)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary"
+                  disabled={loading}
                 >
                   {showPw2 ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
-              <Button className="w-full">Reset Password</Button>
+              <Button
+                type="submit"
+                className="w-full flex items-center justify-center"
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Resetting…
+                  </>
+                ) : (
+                  "Reset Password"
+                )}
+              </Button>
               <p className="text-xs text-center text-muted-foreground">
                 Go back to{" "}
                 <Link href="/login" className="underline hover:text-primary">

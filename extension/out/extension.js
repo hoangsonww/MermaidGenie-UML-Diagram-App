@@ -3,52 +3,45 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deactivate = exports.activate = void 0;
 const vscode = require("vscode");
 function activate(context) {
-  const cmd = "mermaidgenieViewer.openPanel";
-  const openPanel = () => {
-    const cfg = vscode.workspace.getConfiguration("mermaidgenieViewer");
-    const title = cfg.get("panelTitle", "MermaidGenie");
-    const colNum = cfg.get("viewColumn", 1);
-    const keep = cfg.get("retainContext", true);
-    const script = cfg.get("enableScripts", true);
-    const w = cfg.get("iframeWidth", "100%");
-    const h = cfg.get("iframeHeight", "100%");
-    let column;
-    switch (colNum) {
-      case 1:
-        column = vscode.ViewColumn.One;
-        break;
-      case 2:
-        column = vscode.ViewColumn.Two;
-        break;
-      case 3:
-        column = vscode.ViewColumn.Three;
-        break;
-      default:
-        column = vscode.ViewColumn.Active;
+    const cmd = "mermaidgenieViewer.openPanel";
+    const openPanel = () => {
+        const cfg = vscode.workspace.getConfiguration("mermaidgenieViewer");
+        const title = cfg.get("panelTitle", "MermaidGenie");
+        const colNum = cfg.get("viewColumn", 1);
+        const keep = cfg.get("retainContext", true);
+        const script = cfg.get("enableScripts", true);
+        const w = cfg.get("iframeWidth", "100%");
+        const h = cfg.get("iframeHeight", "100%");
+        let column;
+        switch (colNum) {
+            case 1:
+                column = vscode.ViewColumn.One;
+                break;
+            case 2:
+                column = vscode.ViewColumn.Two;
+                break;
+            case 3:
+                column = vscode.ViewColumn.Three;
+                break;
+            default:
+                column = vscode.ViewColumn.Active;
+        }
+        const panel = vscode.window.createWebviewPanel("mermaidgenieViewer", title, column, { enableScripts: script, retainContextWhenHidden: keep });
+        panel.webview.html = getHtml(w, h);
+    };
+    context.subscriptions.push(vscode.commands.registerCommand(cmd, openPanel));
+    if (vscode.workspace
+        .getConfiguration("mermaidgenieViewer")
+        .get("openOnStartup", false)) {
+        openPanel();
     }
-    const panel = vscode.window.createWebviewPanel(
-      "mermaidgenieViewer",
-      title,
-      column,
-      { enableScripts: script, retainContextWhenHidden: keep },
-    );
-    panel.webview.html = getHtml(w, h);
-  };
-  context.subscriptions.push(vscode.commands.registerCommand(cmd, openPanel));
-  if (
-    vscode.workspace
-      .getConfiguration("mermaidgenieViewer")
-      .get("openOnStartup", false)
-  ) {
-    openPanel();
-  }
 }
 exports.activate = activate;
-function deactivate() {}
+function deactivate() { }
 exports.deactivate = deactivate;
 function getHtml(width, height) {
-  const url = "https://mermaidgenie.vercel.app/charts";
-  return `<!DOCTYPE html>
+    const url = "https://mermaidgenie.vercel.app/charts";
+    return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">

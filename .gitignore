@@ -8,7 +8,5 @@ yarn-error.log*
 /.pnp
 .pnp.js
 
-.vscode/*
-
 backend/node_modules
 .env
