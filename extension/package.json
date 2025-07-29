@@ -2,7 +2,7 @@
   "name": "mermaidgenie-viewer",
   "displayName": "MermaidGenie Viewer",
   "description": "Embed MermaidGenie (AI‑powered Mermaid diagram editor) directly in VS Code.",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "publisher": "hoangsonw",
   "license": "MIT",
   "engines": {

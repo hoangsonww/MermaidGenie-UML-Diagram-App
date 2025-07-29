@@ -41,7 +41,7 @@ Please give it a try and share your feedback!
 We also provide a `launch.json` file to quickly start the extension in a development environment. This allows you to test changes live:
 
 1. Open this folder in VS Code.
-2. Press `F5` to launch the Extension Development Host. Alternatively, go to the **Run and Debug** view and select **Launch Extension**.
+2. Press `F5` to launch the Extension Development Host. Alternatively, go to the **Run and Debug** view and select **Run Extension**.
 3. The MermaidGenie Viewer panel will open automatically.
 4. You can now test the extension, make changes, and see them live in the side panel.
 5. To stop debugging, close the Extension Development Host window or press `Shift+F5`.
