@@ -1,5 +1,5 @@
 {
-  "name": "PetSwipe Fullstack Dev",
+  "name": "MermaidGenie Fullstack Dev",
   "build": {
     "dockerfile": "Dockerfile",
     "context": ".."
