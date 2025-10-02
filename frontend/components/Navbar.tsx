@@ -49,6 +49,7 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6">
+          <NavItem href="/templates" label="Templates" />
           {user ? (
             <>
               <NavItem href="/charts" label="Charts" />
@@ -108,6 +109,9 @@ export default function Navbar() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuItem asChild>
+                <Link href="/templates">Templates</Link>
+              </DropdownMenuItem>
               {user ? (
                 <>
                   <DropdownMenuItem asChild>

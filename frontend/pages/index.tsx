@@ -102,6 +102,11 @@ const features = [
     d: "Gemini writes valid Mermaid – hit “Regenerate” until perfect.",
   },
   {
+    icon: "🧱",
+    t: "Template library",
+    d: "Start from ready-made flow, sequence, state and journey diagrams.",
+  },
+  {
     icon: "🔗",
     t: "Collaboration",
     d: "Keep diagrams private or share a read-only link.",

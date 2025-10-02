@@ -104,6 +104,7 @@ Feel free to register an account, create charts, and explore the features. No cr
 | -------------------------- | ------------------------------------------------------------------------------------------ |
 | **Auth**                   | Register, login, JWT, reset password, email verification                                   |
 | **Diagramming**            | Live Mermaid editor with syntax highlighting, AI “Regenerate” button, pan/zoom, fullscreen |
+| **Templates**              | Curated library of flow, sequence, state, journey & mindmap starters ready to copy |
 | **Asset Export**           | One-click SVG / PNG (maskable, transparent, responsive)                                    |
 | **History**                | Version every regenerate/save; rollback coming soon                                        |
 | **Sharing**                | Private by default — flip a switch to publish and get a share link                         |

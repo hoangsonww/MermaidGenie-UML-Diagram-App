@@ -3,6 +3,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import AuthGuard from "@/components/AuthGuard";
 import api from "@/lib/api";
 import { Card } from "@/components/ui/card";
@@ -14,7 +15,7 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 
 export default function CreateChart() {
@@ -66,6 +67,12 @@ function CreateInner() {
               Describe in your natural tone - we’ll translate them into a
               Mermaid UML chart!
             </p>
+            <Link
+              href="/templates"
+              className="inline-flex items-center justify-center gap-1 text-xs font-semibold text-primary transition hover:text-primary/80"
+            >
+              <Sparkles size={14} /> Browse curated templates instead
+            </Link>
           </div>
 
           <form onSubmit={submit} className="space-y-6">
