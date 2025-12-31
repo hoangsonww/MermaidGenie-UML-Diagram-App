@@ -6,6 +6,10 @@ import {
   listCharts,
   updateChart,
 } from "../controllers/chartController";
+import {
+  createChartFromTemplate,
+  listChartTemplates,
+} from "../controllers/templateController";
 import { authenticate } from "../middleware/authMiddleware";
 
 const router = Router();
@@ -44,6 +48,52 @@ const router = Router();
  *         description: Created
  */
 router.post("/", authenticate, createChart);
+
+/**
+ * @swagger
+ * /api/charts/templates:
+ *   get:
+ *     summary: Browse curated Mermaid templates
+ *     tags: [Charts]
+ *     responses:
+ *       200:
+ *         description: OK
+ */
+router.get("/templates", listChartTemplates);
+
+/**
+ * @swagger
+ * /api/charts/templates/{id}:
+ *   post:
+ *     summary: Instantiate a new chart from a template
+ *     tags: [Charts]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Template identifier
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               title:
+ *                 type: string
+ *               prompt:
+ *                 type: string
+ *               isPublic:
+ *                 type: boolean
+ *     responses:
+ *       201:
+ *         description: Created chart from template
+ */
+router.post("/templates/:id", authenticate, createChartFromTemplate);
 
 /**
  * @swagger
