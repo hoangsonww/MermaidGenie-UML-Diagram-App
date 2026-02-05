@@ -36,7 +36,7 @@ export default function Custom404() {
               Go back home
               <ArrowRight
                 size={18}
-                className="ml-2 group-hover:translate-x-1 transition"
+                className="group-hover:translate-x-1 transition"
               />
             </Button>
           </Link>

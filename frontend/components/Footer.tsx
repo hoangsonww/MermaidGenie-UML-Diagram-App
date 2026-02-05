@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Github, Heart, Linkedin } from "lucide-react";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="bg-card border-t">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-8 gap-4 text-sm text-muted-foreground">
@@ -22,7 +24,7 @@ export default function Footer() {
             >
               Son Nguyen
             </Link>{" "}
-            in 2025
+            in {year}
           </span>
         </p>
 
