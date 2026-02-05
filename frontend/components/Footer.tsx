@@ -12,11 +12,11 @@ export default function Footer() {
           <span className="flex items-center gap-1">
             Made with <Heart size={14} className="text-destructive" /> by{" "}
             <Link href="/" className="font-medium hover:text-primary">
-              MermaidGenie
+              MermaidGenie.
             </Link>
           </span>
           <span>
-            · Created by{" "}
+            Created by{" "}
             <Link
               href="https://sonnguyenhoang.com"
               target="_blank"

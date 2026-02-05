@@ -173,17 +173,17 @@ const primaryStats = [
 const impactStats = [
   {
     label: "Mermaid nodes rendered",
-    target: 68_000_000,
+    target: 680_000,
     suffix: "+",
   },
   {
     label: "Relationships mapped",
-    target: 240_000_000,
+    target: 240_000,
     suffix: "+",
   },
   {
     label: "Docs stitched to diagrams",
-    target: 1_400_000,
+    target: 400_000,
     suffix: "+",
   },
   {
@@ -193,7 +193,7 @@ const impactStats = [
   },
   {
     label: "Diagram versions stored",
-    target: 3_400_000,
+    target: 430_000,
     suffix: "+",
   },
   {
