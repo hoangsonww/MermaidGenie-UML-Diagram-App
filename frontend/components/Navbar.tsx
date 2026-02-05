@@ -83,13 +83,13 @@ export default function Navbar() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-36">
               <DropdownMenuItem onClick={() => setTheme("light")}>
-                <Sun size={14} className="mr-2" /> Light
+                <Sun size={14} /> Light
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme("dark")}>
-                <Moon size={14} className="mr-2" /> Dark
+                <Moon size={14} /> Dark
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme("system")}>
-                <Monitor size={14} className="mr-2" /> System
+                <Monitor size={14} /> System
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -117,7 +117,7 @@ export default function Navbar() {
                     <Link href="/profile">Profile</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={logout}>
-                    <LogOut size={14} className="mr-2" /> Logout
+                    <LogOut size={14} /> Logout
                   </DropdownMenuItem>
                 </>
               ) : (
@@ -131,13 +131,13 @@ export default function Navbar() {
                 </>
               )}
               <DropdownMenuItem onClick={() => setTheme("light")}>
-                <Sun size={14} className="mr-2" /> Light
+                <Sun size={14} /> Light
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme("dark")}>
-                <Moon size={14} className="mr-2" /> Dark
+                <Moon size={14} /> Dark
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme("system")}>
-                <Monitor size={14} className="mr-2" /> System
+                <Monitor size={14} /> System
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

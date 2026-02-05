@@ -44,8 +44,8 @@
  *         mermaidCode: "sequenceDiagram\n    User->>Auth: POST /login\n    Auth-->>User: 200 OK"
  *         owner: "60a9f8b2c1d3e04a7c7e5678"
  *         isPublic: true
- *         createdAt: "2025-08-08T14:23:45.000Z"
- *         updatedAt: "2025-08-08T14:25:01.000Z"
+ *         createdAt: "2026-02-14T14:23:45.000Z"
+ *         updatedAt: "2026-02-14T14:25:01.000Z"
  */
 import mongoose from "mongoose";
 

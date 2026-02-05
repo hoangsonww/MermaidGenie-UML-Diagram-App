@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
 import { useTheme } from "next-themes";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import Navbar from "@/components/Navbar";
@@ -31,6 +32,9 @@ function MetaUpdater() {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const isHome = router.pathname === "/";
+
   return (
     <ThemeProvider
       attribute="class"
@@ -71,8 +75,12 @@ export default function App({ Component, pageProps }: AppProps) {
       <Analytics />
 
       <div className="font-sans flex min-h-screen flex-col overflow-x-hidden">
-        <Navbar />
-        <main className="flex-1 overflow-y-auto px-6 py-10">
+        {!isHome && <Navbar />}
+        <main
+          className={`flex-1 overflow-y-auto ${
+            isHome ? "px-0 py-0" : "px-6 py-10"
+          }`}
+        >
           <Component {...pageProps} />
         </main>
         <Footer />

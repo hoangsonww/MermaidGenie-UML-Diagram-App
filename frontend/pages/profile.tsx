@@ -174,7 +174,7 @@ function ProfileInner() {
             </Button>
             <Button onClick={save} disabled={loading}>
               {loading && (
-                <Loader2 className="animate-spin mr-2 h-4 w-4 text-primary" />
+                <Loader2 className="animate-spin  h-4 w-4 text-primary" />
               )}
               Save Changes
             </Button>

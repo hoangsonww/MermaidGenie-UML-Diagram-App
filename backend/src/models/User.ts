@@ -50,8 +50,8 @@ import bcrypt from "bcryptjs";
  *         password: "$2a$10$abcdefg..."
  *         bio: "Full-stack developer and Mermaid enthusiast."
  *         avatarUrl: "https://example.com/avatar.jpg"
- *         createdAt: "2025-08-08T12:34:56.000Z"
- *         updatedAt: "2025-08-08T12:34:56.000Z"
+ *         createdAt: "2026-02-14T12:34:56.000Z"
+ *         updatedAt: "2026-02-14T12:34:56.000Z"
  */
 export interface IUser extends Document {
   _id: Types.ObjectId;
