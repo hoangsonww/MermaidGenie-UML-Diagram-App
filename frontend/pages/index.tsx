@@ -454,7 +454,7 @@ export default function Home() {
       <main className="page-bg relative w-full flex flex-col items-center gap-16 sm:gap-20 pb-24">
         {/*  Hero  */}
         <section className="relative w-full min-h-[100svh] p-[3px] overflow-hidden animated-border flex items-center">
-          <div className="hero-surface bg-background w-full rounded-3xl py-16 md:py-20 px-6 md:px-10 text-center">
+          <div className="hero-surface w-full rounded-3xl py-16 md:py-20 px-6 md:px-10 text-center">
             <div className="flex flex-wrap justify-center gap-2 mb-6">
               {heroBadges.map((badge, i) => (
                 <span
