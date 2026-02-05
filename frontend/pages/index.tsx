@@ -454,7 +454,7 @@ export default function Home() {
       <main className="page-bg relative w-full flex flex-col items-center gap-16 sm:gap-20 pb-24">
         {/*  Hero  */}
         <section className="relative w-full min-h-[100svh] p-[3px] overflow-hidden animated-border flex items-center">
-          <div className="hero-surface w-full rounded-3xl py-16 md:py-20 px-6 md:px-10 text-center">
+          <div className="hero-surface w-full py-16 md:py-20 px-6 md:px-10 text-center">
             <div className="flex flex-wrap justify-center gap-2 mb-6">
               {heroBadges.map((badge, i) => (
                 <span
@@ -880,37 +880,6 @@ export default function Home() {
             position: relative;
             overflow: hidden;
           }
-          .hero-surface::before,
-          .hero-surface::after {
-            content: "";
-            position: absolute;
-            width: 420px;
-            height: 420px;
-            border-radius: 999px;
-            filter: blur(2px);
-            opacity: 0.35;
-            z-index: 0;
-          }
-          .hero-surface::before {
-            top: -140px;
-            left: -120px;
-            background: radial-gradient(
-              circle,
-              rgba(56, 189, 248, 0.45),
-              transparent 70%
-            );
-            animation: float-1 16s ease-in-out infinite;
-          }
-          .hero-surface::after {
-            bottom: -160px;
-            right: -120px;
-            background: radial-gradient(
-              circle,
-              rgba(99, 102, 241, 0.45),
-              transparent 70%
-            );
-            animation: float-2 18s ease-in-out infinite;
-          }
           .hero-surface > * {
             position: relative;
             z-index: 1;
@@ -1021,24 +990,6 @@ export default function Home() {
             }
             100% {
               background-position: 0% 50%;
-            }
-          }
-          @keyframes float-1 {
-            0%,
-            100% {
-              transform: translate3d(0, 0, 0);
-            }
-            50% {
-              transform: translate3d(20px, 18px, 0);
-            }
-          }
-          @keyframes float-2 {
-            0%,
-            100% {
-              transform: translate3d(0, 0, 0);
-            }
-            50% {
-              transform: translate3d(-18px, -12px, 0);
             }
           }
           @media (prefers-reduced-motion: reduce) {
