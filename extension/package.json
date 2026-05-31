@@ -2,7 +2,7 @@
   "name": "mermaidgenie-viewer",
   "displayName": "MermaidGenie Viewer",
   "description": "Embed MermaidGenie (AI‑powered Mermaid diagram editor) directly in VS Code.",
-  "version": "1.2.3",
+  "version": "1.2.6",
   "publisher": "hoangsonw",
   "license": "MIT",
   "engines": {
@@ -20,11 +20,33 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:mermaidgenieViewer.openPanel"
+    "onCommand:mermaidgenieViewer.openPanel",
+    "onView:mermaidgenieViewer.sidebar",
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "icon": "images/logo.png",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "mermaidgenieViewer",
+          "title": "MermaidGenie",
+          "icon": "images/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "mermaidgenieViewer": [
+        {
+          "id": "mermaidgenieViewer.sidebar",
+          "name": "Diagram Editor",
+          "type": "webview",
+          "icon": "images/icon.svg",
+          "contextualTitle": "MermaidGenie"
+        }
+      ]
+    },
     "configuration": {
       "type": "object",
       "title": "MermaidGenie Viewer",
@@ -81,7 +103,25 @@
     "commands": [
       {
         "command": "mermaidgenieViewer.openPanel",
-        "title": "MermaidGenie Viewer: Open Diagram Editor"
+        "title": "Open Diagram Editor",
+        "category": "MermaidGenie",
+        "icon": "$(rocket)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "mermaidgenieViewer.openPanel",
+          "when": "view == mermaidgenieViewer.sidebar",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "mermaidgenieViewer.openPanel",
+        "key": "ctrl+alt+m",
+        "mac": "cmd+alt+m"
       }
     ]
   },

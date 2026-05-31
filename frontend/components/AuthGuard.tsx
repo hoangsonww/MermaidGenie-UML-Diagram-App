@@ -4,6 +4,7 @@ import useUser from "@/hooks/useUser";
 import { LoaderCircle } from "lucide-react";
 import { useEffect } from "react";
 import { toast } from "sonner";
+import { consumeIntentionalLogout } from "@/lib/authFlow";
 
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const { user, loading } = useUser();
@@ -11,7 +12,12 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!loading && !user) {
-      toast.error("Please login first");
+      // If the user just logged out, the Navbar already showed "Logged out";
+      // don't stack a second toast on top of it. The shared id also collapses
+      // any double-invoke (e.g. React StrictMode) into a single toast.
+      if (!consumeIntentionalLogout()) {
+        toast.error("Please login first", { id: "auth-status" });
+      }
       router.replace("/login");
     }
   }, [loading, user, router]);

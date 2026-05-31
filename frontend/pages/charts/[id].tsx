@@ -160,6 +160,12 @@ function Detail({ id }: { id: string }) {
     setCode(cleaned);
   }, [data]);
 
+  // Surface load failures once per error instead of on every re-render
+  // (the old in-body toast.error fired repeatedly while `error` stayed set).
+  useEffect(() => {
+    if (error) toast.error("Failed to load chart", { id: "chart-load" });
+  }, [error]);
+
   const renderDiagram = async (diagramCode: string) => {
     setRenderError(null);
     try {
@@ -293,7 +299,6 @@ function Detail({ id }: { id: string }) {
   };
 
   if (error) {
-    toast.error("Failed to load chart");
     return null;
   }
   if (!data) {
