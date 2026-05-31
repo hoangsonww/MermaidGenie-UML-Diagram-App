@@ -13,6 +13,7 @@ import { useTheme } from "next-themes";
 import { LogOut, Moon, Sun, Monitor, PanelLeft, Menu } from "lucide-react";
 import useUser from "@/hooks/useUser";
 import { toast } from "sonner";
+import { markIntentionalLogout } from "@/lib/authFlow";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -31,9 +32,12 @@ export default function Navbar() {
   );
 
   const logout = () => {
+    // Flag the logout so the AuthGuard redirect that follows on protected
+    // pages doesn't also raise a "Please login first" toast.
+    markIntentionalLogout();
     localStorage.removeItem("token");
     mutate(null);
-    toast.success("Logged out");
+    toast.success("Logged out", { id: "auth-status" });
   };
 
   return (
